@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA1D5326212C581C001BEB88 /* ApixuConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */; };
 		EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */; };
 		EACF8ED5212C2AB3003AEF61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED4212C2AB3003AEF61 /* ViewController.swift */; };
 		EACF8ED8212C2AB3003AEF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED6212C2AB3003AEF61 /* Main.storyboard */; };
 		EACF8EDA212C2AB4003AEF61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */; };
 		EACF8EDD212C2AB4003AEF61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8EDB212C2AB4003AEF61 /* LaunchScreen.storyboard */; };
+		EACF8EEA212C2D2C003AEF61 /* ApixuClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */; };
+		EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EEB212C2D4D003AEF61 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuConvenience.swift; sourceTree = "<group>"; };
 		EACF8ECF212C2AB3003AEF61 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EACF8ED4212C2AB3003AEF61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EACF8EDC212C2AB4003AEF61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EACF8EDE212C2AB4003AEF61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuClient.swift; sourceTree = "<group>"; };
+		EACF8EEB212C2D4D003AEF61 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +61,56 @@
 			isa = PBXGroup;
 			children = (
 				EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */,
-				EACF8ED4212C2AB3003AEF61 /* ViewController.swift */,
-				EACF8ED6212C2AB3003AEF61 /* Main.storyboard */,
+				EACF8EE4212C2AE1003AEF61 /* Network */,
+				EACF8EE5212C2AF4003AEF61 /* Model */,
+				EACF8EE6212C2B02003AEF61 /* View */,
+				EACF8EE7212C2B0F003AEF61 /* Controller */,
+				EACF8EE8212C2B1D003AEF61 /* Storyboards */,
 				EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */,
 				EACF8EDB212C2AB4003AEF61 /* LaunchScreen.storyboard */,
 				EACF8EDE212C2AB4003AEF61 /* Info.plist */,
 			);
 			path = weatherApp;
+			sourceTree = "<group>";
+		};
+		EACF8EE4212C2AE1003AEF61 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */,
+				EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */,
+				EACF8EEB212C2D4D003AEF61 /* Constants.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EACF8EE5212C2AF4003AEF61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EACF8EE6212C2B02003AEF61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EACF8EE7212C2B0F003AEF61 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EACF8ED4212C2AB3003AEF61 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EACF8EE8212C2B1D003AEF61 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EACF8ED6212C2AB3003AEF61 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1D5326212C581C001BEB88 /* ApixuConvenience.swift in Sources */,
+				EACF8EEA212C2D2C003AEF61 /* ApixuClient.swift in Sources */,
 				EACF8ED5212C2AB3003AEF61 /* ViewController.swift in Sources */,
 				EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */,
+				EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
