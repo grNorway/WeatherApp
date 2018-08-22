@@ -90,7 +90,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="cityNameLabel" destination="Z9d-iu-iWS" id="q3s-lO-nmG"/>
                         <outlet property="tableView" destination="3FK-aX-iKb" id="jAz-60-QoQ"/>
+                        <outlet property="tempLabel" destination="2vN-FA-r2B" id="zrU-4m-N8r"/>
+                        <outlet property="weatherDescription" destination="aYd-Es-PVV" id="TzA-Cd-kId"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

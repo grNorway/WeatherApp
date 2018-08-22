@@ -10,25 +10,35 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //MARK: - Properties
+    
+    var currentWeather : CurrentDay?
     
     //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var weatherDescription: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     
     //MARK: - life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        ApixuClient.shared.getCurrentWeather(location: "oslo") { (success, results, error) in
+        ApixuClient.shared.getCurrentWeather(parameterQ: "oslo") { (success, currentDay, errorString) in
             
             if success {
-                print(results)
+                if currentDay != nil {
+                    self.currentWeather = currentDay
+                    print(self.currentWeather)
+                }
             }else{
-                print(results)
+                print(errorString!)
             }
             
         }
+        
         
     }
 

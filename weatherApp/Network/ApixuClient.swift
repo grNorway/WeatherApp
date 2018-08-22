@@ -15,11 +15,12 @@ class ApixuClient{
     
     //typealias completion = (_ results :AnyObject? ,_ error: NSError?) -> Void
     
-    func taskForGetMethod(apiPath : String,parameters :[String : AnyObject]?, completionHandlerForTskGetMethod:@escaping (_ results :AnyObject? ,_ error: NSError?) -> ()){
+    func taskForGetMethod(apiPath : String,parameters :[String : AnyObject], completionHandlerForTskGetMethod:@escaping (_ results :AnyObject? ,_ error: NSError?) -> ()){
         
-        let parameters = [Constants.ApixuParameterKeys.apiKey : Constants.ApixyParameterValues.aPIKeyValue,
-                          Constants.ApixuParameterKeys.parameterQ : "Oslo"]
-        let request = NSMutableURLRequest(url: apixuURLfromParameterrs(apiPath: apiPath, parameters: parameters as [String : AnyObject]))
+        var parameters = parameters
+        parameters[Constants.ApixuParameterKeys.apiKey] = Constants.ApixyParameterValues.aPIKeyValue as AnyObject 
+
+        let request = NSMutableURLRequest(url: apixuURLfromParameterrs(apiPath: apiPath, parameters: parameters ))
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
@@ -35,7 +36,7 @@ class ApixuClient{
             }
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode , statusCode >= 200 && statusCode <= 299 else{
-                print(response)
+                print(response as Any)
                 displayError(errorString: "The response returned a statusCode different from 2xx. Error : \(error!.localizedDescription)")
                 return
             }
@@ -55,7 +56,7 @@ class ApixuClient{
     }
     
     /// Returns the URL for the call on internet
-     private func apixuURLfromParameterrs(apiPath : String, parameters : [String : AnyObject]) -> URL{
+     fileprivate func apixuURLfromParameterrs(apiPath : String, parameters : [String : AnyObject]) -> URL{
         
         var components = URLComponents()
         components.scheme = Constants.Apixu.aPIScheme

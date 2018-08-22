@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		EA1D5326212C581C001BEB88 /* ApixuConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */; };
+		EA971C5B212D3A24004CC8BC /* ApixuClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */; };
+		EA971C5D212D5E7B004CC8BC /* CurrentDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */; };
 		EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */; };
 		EACF8ED5212C2AB3003AEF61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED4212C2AB3003AEF61 /* ViewController.swift */; };
 		EACF8ED8212C2AB3003AEF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED6212C2AB3003AEF61 /* Main.storyboard */; };
 		EACF8EDA212C2AB4003AEF61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */; };
 		EACF8EDD212C2AB4003AEF61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8EDB212C2AB4003AEF61 /* LaunchScreen.storyboard */; };
-		EACF8EEA212C2D2C003AEF61 /* ApixuClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */; };
 		EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EEB212C2D4D003AEF61 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuConvenience.swift; sourceTree = "<group>"; };
+		EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDay.swift; sourceTree = "<group>"; };
 		EACF8ECF212C2AB3003AEF61 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EACF8ED4212C2AB3003AEF61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		EACF8EE5212C2AF4003AEF61 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,9 +187,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA971C5D212D5E7B004CC8BC /* CurrentDay.swift in Sources */,
 				EA1D5326212C581C001BEB88 /* ApixuConvenience.swift in Sources */,
-				EACF8EEA212C2D2C003AEF61 /* ApixuClient.swift in Sources */,
 				EACF8ED5212C2AB3003AEF61 /* ViewController.swift in Sources */,
+				EA971C5B212D3A24004CC8BC /* ApixuClient.swift in Sources */,
 				EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */,
 				EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */,
 			);
