@@ -50,7 +50,6 @@ class ApixuClient{
             self.convertDataToJSON(data: data, completionHandlerForConvertingDataToJSON: completionHandlerForTskGetMethod)
             
             
-            
         }
         task.resume()
     }

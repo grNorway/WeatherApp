@@ -10,10 +10,10 @@ import UIKit
 
 struct CurrentDay {
     
-    var cityName : String?
-    var weatherDescription: String?
-    var tempString : Float?
-    var is_day : Bool?
-    var weatherIconUrlString : String?
+    var cityName : String!
+    var weatherDescription: String!
+    var tempAvgInt : Int!
+    var is_day : Bool!
+    var weatherIconUrlString : String!
     
 }

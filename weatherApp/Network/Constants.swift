@@ -60,6 +60,7 @@ struct Constants{
             static let temp_c = "temp_c"
             static let is_day = "is_day"
             
+            
             static let condition = "condition"
             struct Condition{
                 static let text = "text"

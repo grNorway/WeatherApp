@@ -13,9 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let coreDataStack = CoreDataStack(modelName: "DataModel")
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let viewController = window?.rootViewController as! ViewController
+        viewController.coreDataStack = coreDataStack
+        
+        coreDataStack.load {
+            print("Persisten Container Loaded")
+        }
+        
         return true
     }
 

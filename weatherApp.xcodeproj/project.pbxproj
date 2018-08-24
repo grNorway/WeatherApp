@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA1685E8212EA5F0002FC8A4 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1685E7212EA5F0002FC8A4 /* UIViewControllerExtension.swift */; };
+		EA1685EC212EC669002FC8A4 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA1685EA212EC669002FC8A4 /* DataModel.xcdatamodeld */; };
+		EA1685EE212ED828002FC8A4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1685ED212ED828002FC8A4 /* CoreDataStack.swift */; };
+		EA1685F2212EEEAB002FC8A4 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1685F1212EEEAB002FC8A4 /* NotificationName.swift */; };
 		EA1D5326212C581C001BEB88 /* ApixuConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */; };
 		EA971C5B212D3A24004CC8BC /* ApixuClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */; };
 		EA971C5D212D5E7B004CC8BC /* CurrentDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */; };
+		EA971C5F212D9389004CC8BC /* LocationsStoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C5E212D9389004CC8BC /* LocationsStoredViewController.swift */; };
+		EA971C61212D9851004CC8BC /* SearchAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C60212D9851004CC8BC /* SearchAddLocationViewController.swift */; };
+		EA971C63212DA15E004CC8BC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C62212DA15E004CC8BC /* Location.swift */; };
 		EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */; };
 		EACF8ED5212C2AB3003AEF61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED4212C2AB3003AEF61 /* ViewController.swift */; };
 		EACF8ED8212C2AB3003AEF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED6212C2AB3003AEF61 /* Main.storyboard */; };
@@ -19,8 +26,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA1685E7212EA5F0002FC8A4 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		EA1685EB212EC669002FC8A4 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		EA1685ED212ED828002FC8A4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		EA1685F1212EEEAB002FC8A4 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuConvenience.swift; sourceTree = "<group>"; };
 		EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDay.swift; sourceTree = "<group>"; };
+		EA971C5E212D9389004CC8BC /* LocationsStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsStoredViewController.swift; sourceTree = "<group>"; };
+		EA971C60212D9851004CC8BC /* SearchAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddLocationViewController.swift; sourceTree = "<group>"; };
+		EA971C62212DA15E004CC8BC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EACF8ECF212C2AB3003AEF61 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EACF8ED4212C2AB3003AEF61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +57,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA1685E6212EA5D5002FC8A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EA1685E7212EA5F0002FC8A4 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EA1685E9212EC651002FC8A4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EA1685EA212EC669002FC8A4 /* DataModel.xcdatamodeld */,
+				EA1685ED212ED828002FC8A4 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		EACF8EC6212C2AB3003AEF61 = {
 			isa = PBXGroup;
 			children = (
@@ -63,10 +94,12 @@
 			isa = PBXGroup;
 			children = (
 				EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */,
+				EA1685F1212EEEAB002FC8A4 /* NotificationName.swift */,
 				EACF8EE4212C2AE1003AEF61 /* Network */,
 				EACF8EE5212C2AF4003AEF61 /* Model */,
 				EACF8EE6212C2B02003AEF61 /* View */,
 				EACF8EE7212C2B0F003AEF61 /* Controller */,
+				EA1685E6212EA5D5002FC8A4 /* Extensions */,
 				EACF8EE8212C2B1D003AEF61 /* Storyboards */,
 				EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */,
 				EACF8EDB212C2AB4003AEF61 /* LaunchScreen.storyboard */,
@@ -89,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */,
+				EA971C62212DA15E004CC8BC /* Location.swift */,
+				EA1685E9212EC651002FC8A4 /* CoreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				EACF8ED4212C2AB3003AEF61 /* ViewController.swift */,
+				EA971C5E212D9389004CC8BC /* LocationsStoredViewController.swift */,
+				EA971C60212D9851004CC8BC /* SearchAddLocationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,12 +224,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1685EC212EC669002FC8A4 /* DataModel.xcdatamodeld in Sources */,
 				EA971C5D212D5E7B004CC8BC /* CurrentDay.swift in Sources */,
 				EA1D5326212C581C001BEB88 /* ApixuConvenience.swift in Sources */,
+				EA1685EE212ED828002FC8A4 /* CoreDataStack.swift in Sources */,
+				EA1685E8212EA5F0002FC8A4 /* UIViewControllerExtension.swift in Sources */,
 				EACF8ED5212C2AB3003AEF61 /* ViewController.swift in Sources */,
 				EA971C5B212D3A24004CC8BC /* ApixuClient.swift in Sources */,
+				EA971C63212DA15E004CC8BC /* Location.swift in Sources */,
+				EA971C5F212D9389004CC8BC /* LocationsStoredViewController.swift in Sources */,
+				EA1685F2212EEEAB002FC8A4 /* NotificationName.swift in Sources */,
 				EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */,
 				EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */,
+				EA971C61212D9851004CC8BC /* SearchAddLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +434,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EA1685EA212EC669002FC8A4 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EA1685EB212EC669002FC8A4 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = EA1685EB212EC669002FC8A4 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EACF8EC7212C2AB3003AEF61 /* Project object */;
 }
