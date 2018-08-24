@@ -31,6 +31,7 @@
 		EA1685ED212ED828002FC8A4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EA1685F1212EEEAB002FC8A4 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuConvenience.swift; sourceTree = "<group>"; };
+		EA3E078B212FEE7D008D06E3 /* DataModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel2.xcdatamodel; sourceTree = "<group>"; };
 		EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDay.swift; sourceTree = "<group>"; };
 		EA971C5E212D9389004CC8BC /* LocationsStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsStoredViewController.swift; sourceTree = "<group>"; };
 		EA971C60212D9851004CC8BC /* SearchAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddLocationViewController.swift; sourceTree = "<group>"; };
@@ -439,9 +440,10 @@
 		EA1685EA212EC669002FC8A4 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EA3E078B212FEE7D008D06E3 /* DataModel2.xcdatamodel */,
 				EA1685EB212EC669002FC8A4 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = EA1685EB212EC669002FC8A4 /* DataModel.xcdatamodel */;
+			currentVersion = EA3E078B212FEE7D008D06E3 /* DataModel2.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

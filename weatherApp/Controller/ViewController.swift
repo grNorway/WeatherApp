@@ -40,23 +40,6 @@ class ViewController: UIViewController {
 
         locateMe()
         
-        ApixuClient.shared.getCurrentWeather(parameterQ: "oslo") { (success, currentDay, errorString) in
-            
-            if success {
-                print()
-                DispatchQueue.main.async {
-                    self.updateCurrentWeatherView(currentWeatherObject: currentDay!)
-                }
-                
-            }else{
-                print(errorString!)
-                DispatchQueue.main.async {
-                    self.weatherDescription.text = errorString!
-                }
-                
-            }
-            
-        }
         
         
     }
@@ -81,7 +64,8 @@ class ViewController: UIViewController {
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.showStoredLocations{
-            
+            let locationsStoredViewController = segue.destination as! LocationsStoredViewController
+            locationsStoredViewController.coreDataStack = coreDataStack
         }
     }
     
@@ -127,8 +111,8 @@ extension ViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
-        let coordinates = manager.location?.coordinate
-        print(coordinates)
+        //let coordinates = manager.location?.coordinate
+        //print(coordinates)
 
     }
     

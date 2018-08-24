@@ -110,6 +110,13 @@ extension SearchAddLocationViewController : UITableViewDelegate {
             if let locationName = cell.textLabel?.text{
                 let locationUserInfo : [String : String] = ["LocationName" : locationName]
                 NotificationCenter.default.post(name: .locationDidSelected, object: nil, userInfo: locationUserInfo)
+                ApixuClient.shared.getCurrentWeatherAndForecast(parameterQ: locationName, days: 1) { (success, errorString) in
+                    if success{
+                        print("success")
+                    }else{
+                        print(errorString!)
+                    }
+                }
                 dismiss(animated: true, completion: nil)
                 
             }

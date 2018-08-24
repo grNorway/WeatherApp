@@ -63,6 +63,7 @@ class CoreDataStack {
         if viewContext.hasChanges{
             do{
                 try viewContext.save()
+                print("ViewContext Saved")
             }catch{
                 fatalError("ViewContext Save Error : \(error)     Error Message: \(error.localizedDescription)")
             }
@@ -86,3 +87,35 @@ class CoreDataStack {
     
     
 }
+
+extension CoreDataStack {
+    
+    func setupFetchRequest(objectName: String ,sortingKey : String , ascending: Bool ,predicate : String? , arg : NSManagedObject?) -> NSFetchRequest<NSFetchRequestResult>{
+    
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: objectName)
+        let sortDescriptor = NSSortDescriptor(key:sortingKey,ascending : ascending)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if predicate == nil {
+            return fetchRequest
+        }else{
+            let predicate = NSPredicate(format: predicate!, arg!)
+            fetchRequest.predicate = predicate
+            return fetchRequest
+        }
+    }
+    
+    func setupFetchResultsController(fetchRequest : NSFetchRequest<NSFetchRequestResult> , context: NSManagedObjectContext ) -> NSFetchedResultsController<NSFetchRequestResult>{
+        
+        let fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchResultsController
+        
+    }
+    
+}
+
+
+
+
+

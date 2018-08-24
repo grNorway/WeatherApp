@@ -10,8 +10,12 @@ import UIKit
 
 class ApixuClient{
     
+    //MARK: - Properties
+    
     static let shared = ApixuClient()
     var session = URLSession.shared
+    var coreDataStack = (UIApplication.shared.delegate as! AppDelegate).coreDataStack
+    
     
     //typealias completion = (_ results :AnyObject? ,_ error: NSError?) -> Void
     
