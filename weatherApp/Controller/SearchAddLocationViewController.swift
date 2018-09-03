@@ -17,7 +17,9 @@ class SearchAddLocationViewController: UIViewController {
     
     //MARK: - Properties
     
-    var locations : [Location] = []
+    private var locations : [Location] = []
+    var coreDataStack : CoreDataStack!
+    
     
     //MARK: - Life Cycle
     
@@ -28,6 +30,21 @@ class SearchAddLocationViewController: UIViewController {
         searchBar.showsCancelButton = true
         searchBar.setShowsCancelButton(true, animated: true)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupSearchBar()
+    }
+    
+    fileprivate func setupSearchBar() {
+        searchBar.becomeFirstResponder()
+        searchBar.barTintColor = UIColor.clear
+        searchBar.backgroundColor = UIColor.clear
+        searchBar.isTranslucent = true
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        tableView.backgroundColor = UIColor.clear
     }
 
 
@@ -40,18 +57,24 @@ extension SearchAddLocationViewController : UISearchBarDelegate{
     
     // Cancel Button Pressed
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        dismiss(animated: true) {
-            print(" SearchAddLocationViewcontroller Dismissed")
-        }
+        navigationController?.popViewController(animated: true)
     }
     
-    // Starts Editing
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
+        print("Started")
     }
     
+    
+    
+    
+    //MARK: - SearchBar
+    /// Returns a string when text Change in SearchBar and call the getSearchLocations to return the possible locations
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         print(searchText)
+        if searchText == "" {
+            return
+        }
         ApixuClient.shared.getSearchLocations(parameterQ: searchText) { (success, results, errorString) in
             
             if let results = results{
@@ -72,15 +95,10 @@ extension SearchAddLocationViewController : UISearchBarDelegate{
         }
     }
     
-    // End Editing
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("Ended Editing")
-    }
-    
-    
     
 }
 
+//MARK: - UITableViewDataSource
 extension SearchAddLocationViewController : UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -102,29 +120,37 @@ extension SearchAddLocationViewController : UITableViewDataSource{
     }
 }
 
+//MARK: - UITableViewDelegate
 extension SearchAddLocationViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let cell = tableView.cellForRow(at: indexPath){
-            if let locationName = cell.textLabel?.text{
-                let locationUserInfo : [String : String] = ["LocationName" : locationName]
-                NotificationCenter.default.post(name: .locationDidSelected, object: nil, userInfo: locationUserInfo)
-                ApixuClient.shared.getCurrentWeatherAndForecast(parameterQ: locationName, days: 1) { (success, errorString) in
-                    if success{
-                        print("success")
-                    }else{
-                        print(errorString!)
-                    }
-                }
-                dismiss(animated: true, completion: nil)
-                
+        let locationSelected = locations[indexPath.row]
+        let fetchRequest = coreDataStack.setupFetchRequest(objectName: "LocationCurrentWeatherObject", sortingKey: "locationID", ascending: true, predicate: "locationID == %i", arg: locationSelected.locationID )
+        
+        do{
+            let results = try coreDataStack.viewContext.fetch(fetchRequest)
+            let resultsLocations = results as! [LocationCurrentWeatherObject]
+            
+            if resultsLocations.count != 0 {
+                print("The location Exists")
+                self.dismiss(animated: true, completion: nil)
+                return
+            }
+        }catch{
+            print("Error fetch TableViewDidSelectRow: \(error) msg: \(error.localizedDescription)")
+        }
+        
+        print("Tapped")
+        ApixuClient.shared.getCurrentWeatherAndForecast(parameterQ: locationSelected.name,locationID:locationSelected.locationID, days: 1) { (success, errorString) in
+            if success{
+                print("success")
+            }else{
+                print(errorString!)
             }
         }
         
-        
-        
-        
+        navigationController?.popViewController(animated: true)
     }
     
 }

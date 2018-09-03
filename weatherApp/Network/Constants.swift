@@ -53,6 +53,7 @@ struct Constants{
             static let name = "name"
             static let localtime_epoch = "localtime_epoch"
             static let localtime = "localtime"
+            static let timezoneID = "tz_id"
         }
         
         static let current = "current"

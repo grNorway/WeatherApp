@@ -16,6 +16,11 @@ class ApixuClient{
     var session = URLSession.shared
     var coreDataStack = (UIApplication.shared.delegate as! AppDelegate).coreDataStack
     
+    var dateFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYY-MM-dd HH:mm"
+        return formatter
+    }()
     
     //typealias completion = (_ results :AnyObject? ,_ error: NSError?) -> Void
     

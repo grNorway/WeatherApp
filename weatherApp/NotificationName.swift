@@ -10,6 +10,6 @@ import Foundation
 
 extension Notification.Name {
     
-    static let locationDidSelected = Notification.Name(rawValue: "locationDidSelected")
+    static let locationSelected = Notification.Name(rawValue: "locationSelected")
     
 }

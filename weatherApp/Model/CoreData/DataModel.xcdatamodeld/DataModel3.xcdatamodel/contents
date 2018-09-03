@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G2208" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DayWeatherObject" representedClassName="DayWeatherObject" syncable="YES" codeGenerationType="class">
+        <attribute name="dayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iconWeather" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="maxTemp_c" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="minTemp_c" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCurrentWeatherObject" inverseName="dayWeatherObject" inverseEntity="LocationCurrentWeatherObject" syncable="YES"/>
+    </entity>
+    <entity name="HourWeatherObject" representedClassName="HourWeatherObject" syncable="YES" codeGenerationType="class">
+        <attribute name="chance_of_rain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chance_of_snow" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iconWeather" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="temp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCurrentWeatherObject" inverseName="hourWeatherObjects" inverseEntity="LocationCurrentWeatherObject" syncable="YES"/>
+    </entity>
+    <entity name="LocationCurrentWeatherObject" representedClassName="LocationCurrentWeatherObject" syncable="YES" codeGenerationType="class">
+        <attribute name="avgtemp_c" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="iconStringURL" attributeType="String" syncable="YES"/>
+        <attribute name="iconWeather" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="isCurrentLocation" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isDay" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="localTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="locationID" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="locationName" attributeType="String" syncable="YES"/>
+        <attribute name="maxTemp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="minTemp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="textDescription" attributeType="String" syncable="YES"/>
+        <attribute name="timezoneID" attributeType="String" syncable="YES"/>
+        <relationship name="dayWeatherObject" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DayWeatherObject" inverseName="location" inverseEntity="DayWeatherObject" syncable="YES"/>
+        <relationship name="hourWeatherObjects" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HourWeatherObject" inverseName="location" inverseEntity="HourWeatherObject" syncable="YES"/>
+        <relationship name="locationDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LocationDetailsObject" inverseName="locationCurrent" inverseEntity="LocationDetailsObject" syncable="YES"/>
+    </entity>
+    <entity name="LocationDetailsObject" representedClassName="LocationDetailsObject" syncable="YES" codeGenerationType="class">
+        <attribute name="avgHumidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="avgTemp_c" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="avgVis_km" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="maxwind_kph" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="precip_mm" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sunrise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sunset" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uv" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="locationCurrent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCurrentWeatherObject" inverseName="locationDetails" inverseEntity="LocationCurrentWeatherObject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DayWeatherObject" positionX="-108" positionY="-270" width="128" height="118"/>
+        <element name="HourWeatherObject" positionX="-110" positionY="297" width="128" height="133"/>
+        <element name="LocationCurrentWeatherObject" positionX="9" positionY="-100" width="128" height="283"/>
+        <element name="LocationDetailsObject" positionX="360" positionY="0" width="128" height="178"/>
+    </elements>
+</model>

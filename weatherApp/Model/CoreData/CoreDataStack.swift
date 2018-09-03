@@ -9,11 +9,12 @@
 // Core Data Stack
 
 
-import Foundation
+import UIKit
 import CoreData
 
 
 class CoreDataStack {
+    
     
     //MARK: - Persistent Container
     let persistenContainer : NSPersistentContainer
@@ -77,6 +78,7 @@ class CoreDataStack {
             
             do{
                 try backgroundContext.save()
+                print("Saved Background")
             }catch{
                 fatalError("backgroundContext Save Error : \(error)     Error Message: \(error.localizedDescription)")
             }
@@ -90,7 +92,7 @@ class CoreDataStack {
 
 extension CoreDataStack {
     
-    func setupFetchRequest(objectName: String ,sortingKey : String , ascending: Bool ,predicate : String? , arg : NSManagedObject?) -> NSFetchRequest<NSFetchRequestResult>{
+    func setupFetchRequest(objectName: String ,sortingKey : String , ascending: Bool ,predicate : String? , arg : CVarArg?) -> NSFetchRequest<NSFetchRequestResult>{
     
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: objectName)
         let sortDescriptor = NSSortDescriptor(key:sortingKey,ascending : ascending)

@@ -14,16 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let coreDataStack = CoreDataStack(modelName: "DataModel")
-    
+    var locationID: Int32?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let viewController = window?.rootViewController as! ViewController
-        viewController.coreDataStack = coreDataStack
         
         coreDataStack.load {
             print("Persisten Container Loaded")
         }
+        
+        let navigationController = window?.rootViewController as! UINavigationController
+        let locationsStoredViewController = navigationController.topViewController as! LocationsStoredViewController
+        locationsStoredViewController.coreDataStack = coreDataStack
+        
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "SunnyWeather"), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.orange,.font: UIFont.systemFont(ofSize: 25, weight: UIFont.Weight.heavy)]
         
         return true
     }
@@ -49,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
 
 }
 

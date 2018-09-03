@@ -12,17 +12,21 @@
 		EA1685EE212ED828002FC8A4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1685ED212ED828002FC8A4 /* CoreDataStack.swift */; };
 		EA1685F2212EEEAB002FC8A4 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1685F1212EEEAB002FC8A4 /* NotificationName.swift */; };
 		EA1D5326212C581C001BEB88 /* ApixuConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */; };
+		EA3E078D212FF966008D06E3 /* LocationStoredTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3E078C212FF966008D06E3 /* LocationStoredTableViewCell.swift */; };
 		EA971C5B212D3A24004CC8BC /* ApixuClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */; };
 		EA971C5D212D5E7B004CC8BC /* CurrentDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */; };
 		EA971C5F212D9389004CC8BC /* LocationsStoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C5E212D9389004CC8BC /* LocationsStoredViewController.swift */; };
 		EA971C61212D9851004CC8BC /* SearchAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C60212D9851004CC8BC /* SearchAddLocationViewController.swift */; };
 		EA971C63212DA15E004CC8BC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA971C62212DA15E004CC8BC /* Location.swift */; };
 		EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */; };
-		EACF8ED5212C2AB3003AEF61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED4212C2AB3003AEF61 /* ViewController.swift */; };
+		EACF8ED5212C2AB3003AEF61 /* WeatherForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED4212C2AB3003AEF61 /* WeatherForecastViewController.swift */; };
 		EACF8ED8212C2AB3003AEF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED6212C2AB3003AEF61 /* Main.storyboard */; };
 		EACF8EDA212C2AB4003AEF61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */; };
 		EACF8EDD212C2AB4003AEF61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8EDB212C2AB4003AEF61 /* LaunchScreen.storyboard */; };
 		EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EEB212C2D4D003AEF61 /* Constants.swift */; };
+		EADEE17C2136877C00B2C6F3 /* DayPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADEE17B2136877C00B2C6F3 /* DayPrediction.swift */; };
+		EADEE17E2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADEE17D2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift */; };
+		EAF861B92131C03C00B09E32 /* ThingsToDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF861B82131C03C00B09E32 /* ThingsToDO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,19 +36,28 @@
 		EA1685F1212EEEAB002FC8A4 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		EA1D5325212C581C001BEB88 /* ApixuConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuConvenience.swift; sourceTree = "<group>"; };
 		EA3E078B212FEE7D008D06E3 /* DataModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel2.xcdatamodel; sourceTree = "<group>"; };
+		EA3E078C212FF966008D06E3 /* LocationStoredTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStoredTableViewCell.swift; sourceTree = "<group>"; };
+		EA8AA5202133EBCF009473D6 /* DataModel4From2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel4From2.xcdatamodel; sourceTree = "<group>"; };
+		EA8AA5212133F2AB009473D6 /* DataModel4From 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel4From 2.xcdatamodel"; sourceTree = "<group>"; };
 		EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDay.swift; sourceTree = "<group>"; };
 		EA971C5E212D9389004CC8BC /* LocationsStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsStoredViewController.swift; sourceTree = "<group>"; };
 		EA971C60212D9851004CC8BC /* SearchAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddLocationViewController.swift; sourceTree = "<group>"; };
 		EA971C62212DA15E004CC8BC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		EABD2A752131AA5800F156B5 /* DataModel3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel3.xcdatamodel; sourceTree = "<group>"; };
 		EACF8ECF212C2AB3003AEF61 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EACF8ED4212C2AB3003AEF61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EACF8ED4212C2AB3003AEF61 /* WeatherForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastViewController.swift; sourceTree = "<group>"; };
 		EACF8ED7212C2AB3003AEF61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EACF8EDC212C2AB4003AEF61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EACF8EDE212C2AB4003AEF61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuClient.swift; sourceTree = "<group>"; };
 		EACF8EEB212C2D4D003AEF61 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EADEE1792135815100B2C6F3 /* DataModel4From3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel4From3.xcdatamodel; sourceTree = "<group>"; };
+		EADEE17A2136820600B2C6F3 /* DataModel5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel5.xcdatamodel; sourceTree = "<group>"; };
+		EADEE17B2136877C00B2C6F3 /* DayPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPrediction.swift; sourceTree = "<group>"; };
+		EADEE17D2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherForLocationCell.swift; sourceTree = "<group>"; };
+		EAF861B82131C03C00B09E32 /* ThingsToDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsToDO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +91,7 @@
 		EACF8EC6212C2AB3003AEF61 = {
 			isa = PBXGroup;
 			children = (
+				EAF861B82131C03C00B09E32 /* ThingsToDO.swift */,
 				EACF8ED1212C2AB3003AEF61 /* weatherApp */,
 				EACF8ED0212C2AB3003AEF61 /* Products */,
 			);
@@ -124,6 +138,7 @@
 			children = (
 				EA971C5C212D5E7B004CC8BC /* CurrentDay.swift */,
 				EA971C62212DA15E004CC8BC /* Location.swift */,
+				EADEE17B2136877C00B2C6F3 /* DayPrediction.swift */,
 				EA1685E9212EC651002FC8A4 /* CoreData */,
 			);
 			path = Model;
@@ -132,6 +147,8 @@
 		EACF8EE6212C2B02003AEF61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EA3E078C212FF966008D06E3 /* LocationStoredTableViewCell.swift */,
+				EADEE17D2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,9 +156,9 @@
 		EACF8EE7212C2B0F003AEF61 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EACF8ED4212C2AB3003AEF61 /* ViewController.swift */,
 				EA971C5E212D9389004CC8BC /* LocationsStoredViewController.swift */,
 				EA971C60212D9851004CC8BC /* SearchAddLocationViewController.swift */,
+				EACF8ED4212C2AB3003AEF61 /* WeatherForecastViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -228,14 +245,18 @@
 				EA1685EC212EC669002FC8A4 /* DataModel.xcdatamodeld in Sources */,
 				EA971C5D212D5E7B004CC8BC /* CurrentDay.swift in Sources */,
 				EA1D5326212C581C001BEB88 /* ApixuConvenience.swift in Sources */,
+				EADEE17C2136877C00B2C6F3 /* DayPrediction.swift in Sources */,
 				EA1685EE212ED828002FC8A4 /* CoreDataStack.swift in Sources */,
 				EA1685E8212EA5F0002FC8A4 /* UIViewControllerExtension.swift in Sources */,
-				EACF8ED5212C2AB3003AEF61 /* ViewController.swift in Sources */,
+				EACF8ED5212C2AB3003AEF61 /* WeatherForecastViewController.swift in Sources */,
 				EA971C5B212D3A24004CC8BC /* ApixuClient.swift in Sources */,
 				EA971C63212DA15E004CC8BC /* Location.swift in Sources */,
 				EA971C5F212D9389004CC8BC /* LocationsStoredViewController.swift in Sources */,
+				EA3E078D212FF966008D06E3 /* LocationStoredTableViewCell.swift in Sources */,
 				EA1685F2212EEEAB002FC8A4 /* NotificationName.swift in Sources */,
+				EADEE17E2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift in Sources */,
 				EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */,
+				EAF861B92131C03C00B09E32 /* ThingsToDO.swift in Sources */,
 				EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */,
 				EA971C61212D9851004CC8BC /* SearchAddLocationViewController.swift in Sources */,
 			);
@@ -440,10 +461,15 @@
 		EA1685EA212EC669002FC8A4 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EADEE17A2136820600B2C6F3 /* DataModel5.xcdatamodel */,
+				EADEE1792135815100B2C6F3 /* DataModel4From3.xcdatamodel */,
+				EA8AA5212133F2AB009473D6 /* DataModel4From 2.xcdatamodel */,
+				EA8AA5202133EBCF009473D6 /* DataModel4From2.xcdatamodel */,
+				EABD2A752131AA5800F156B5 /* DataModel3.xcdatamodel */,
 				EA3E078B212FEE7D008D06E3 /* DataModel2.xcdatamodel */,
 				EA1685EB212EC669002FC8A4 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = EA3E078B212FEE7D008D06E3 /* DataModel2.xcdatamodel */;
+			currentVersion = EADEE17A2136820600B2C6F3 /* DataModel5.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
