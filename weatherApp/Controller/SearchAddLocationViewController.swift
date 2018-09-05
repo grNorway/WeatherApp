@@ -249,6 +249,7 @@ extension SearchAddLocationViewController {
                 if self.recognizedLocation == ""{
                     self.recognizedLocation = self.locationEntityRecognition(for: bestString)
                     
+                    if self.recognizedLocation != ""{
                     ApixuClient.shared.getSearchLocations(parameterQ: self.recognizedLocation, completionHandlerForGetSearchLocations: { (success, results, errorString) in
                         if success{
                             if let results = results {
@@ -261,6 +262,7 @@ extension SearchAddLocationViewController {
                             }
                         }
                     })
+                    }
                 }else{
                     var lastString : String = ""
                     for segment in result.bestTranscription.segments{
@@ -338,12 +340,7 @@ extension SearchAddLocationViewController {
             }
         case "No","no":
             print("User said NO")
-            //stop AudioEngine
-            //self.stopRecording()
-            //Recognize Location = ""
             self.recognizedLocation = ""
-            //tableView.empty
-            //self.locations = []
             self.locations = []
             self.tableView.reloadData()
             //self.recordAndRecognizeSpeech()
