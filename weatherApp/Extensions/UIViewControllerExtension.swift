@@ -12,26 +12,19 @@ extension UIViewController  {
     
     //MARK: - ErrorTitles
     
-    enum ErrorTitles {
-        static let NetworkError = "Network Error"
-        static let Internal_Error = "Internal Error"
-    }
-    
-    //MARK: - ErrorMessages
-    
-    enum ErrorMessages{
-        static let Internal_Error = "The was an Internal Error. Please contact the customer Support."
-    }
     
     struct Errors{
         
         struct ErrorTitles {
             static let NetworkError = "Network Error"
             static let Internal_Error = "Internal Error"
+            static let SpeechError = "Error"
         }
         
         struct ErrorMessages{
             static let Internal_Error = "There was an Internal Error. Please contact the customer Support."
+            static let SpeechRecognizerErrorNotAvailable = "Speech Recognition is not avaialble. Please try later or contact customer support"
+            static let SpeechRecognitionErrorLocale = "Speech Recognition is not supported"
         }
     }
     

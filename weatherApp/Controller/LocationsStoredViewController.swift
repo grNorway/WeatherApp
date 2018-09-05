@@ -53,6 +53,7 @@ class LocationsStoredViewController: UIViewController{
     
     //MARK: - Functions
     
+    ///Setup the FetchRequest
     fileprivate func setupFetchRequest() {
         fetchRequest = coreDataStack.setupFetchRequest(objectName: "LocationCurrentWeatherObject", sortingKey: "creationDate", ascending: true, predicate: nil, arg: nil)
         fetchResultsController = (coreDataStack.setupFetchResultsController(fetchRequest: fetchRequest, context: coreDataStack.viewContext) as! NSFetchedResultsController<LocationCurrentWeatherObject>)
@@ -104,7 +105,7 @@ extension LocationsStoredViewController : UITableViewDelegate{
         if let locationName = locationSelected.locationName {
             performSegue(withIdentifier: "WeatherForecast", sender: locationName)
         }else{
-            self.showAlert(title: ErrorTitles.Internal_Error, msg: ErrorMessages.Internal_Error)
+            self.showAlert(title: Errors.ErrorTitles.Internal_Error, msg: Errors.ErrorMessages.Internal_Error)
         }
         tableView.deselectRow(at: indexPath, animated: true)
         

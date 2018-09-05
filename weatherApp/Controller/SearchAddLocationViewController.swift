@@ -11,7 +11,7 @@ import Speech
 import AVFoundation
 import CoreData
 
-class SearchAddLocationViewController: UIViewController {
+class SearchAddLocationViewController: UIViewController{
 
     //MARK: - Outlets
     
@@ -26,7 +26,8 @@ class SearchAddLocationViewController: UIViewController {
     //MARK: - SpeechRecognizer Properties
     
     private let audioEngine = AVAudioEngine()
-    private let speechRecognizer : SFSpeechRecognizer? = SFSpeechRecognizer()
+    private var speechRecognizer : SFSpeechRecognizer? = SFSpeechRecognizer()
+    //private let speechRecognizer = SFSpeechRecognizer()
     private var request = SFSpeechAudioBufferRecognitionRequest()
     private var recognitionTask : SFSpeechRecognitionTask?
     
@@ -40,25 +41,16 @@ class SearchAddLocationViewController: UIViewController {
     
     let synthesizer = AVSpeechSynthesizer()
     
+    
+    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        searchBar.delegate = self
-        searchBar.showsCancelButton = true
-        searchBar.setShowsCancelButton(true, animated: true)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Speak", style: .done, target: self, action: #selector(recordAndRecognizeSpeech))
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
-        self.navigationItem.rightBarButtonItem?.tintColor = .darkGray
         
         requestSpeechAuthorization()
-        
-        
         synthesizer.delegate = self
-        
     }
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,15 +59,30 @@ class SearchAddLocationViewController: UIViewController {
         setupSearchBar()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.stopRecording()
+    }
     
+    
+    //MARK: - Fucntions
+    
+    private func setupNavigationBar(){
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Speak", style: .done, target: self, action: #selector(recordAndRecognizeSpeech))
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.rightBarButtonItem?.tintColor = .darkGray
+    }
     
     /// it setup the searchBar
     fileprivate func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.setShowsCancelButton(true, animated: true)
         searchBar.becomeFirstResponder()
         searchBar.barTintColor = UIColor.clear
         searchBar.backgroundColor = UIColor.clear
         searchBar.isTranslucent = true
-        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        //searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         tableView.backgroundColor = UIColor.clear
     }
     
@@ -100,6 +107,7 @@ class SearchAddLocationViewController: UIViewController {
         
     }
 
+    /// Takes a Location as parameter and makes a call getCurrentWeatherAndForecast and saves the results from the API to Core Data
     private func saveLocationToCoreData(locationSelected : Location){
         ApixuClient.shared.getCurrentWeatherAndForecast(parameterQ: locationSelected.name, locationID: locationSelected.locationID, days: 1) { (success, errorString) in
             if success{
@@ -122,10 +130,6 @@ extension SearchAddLocationViewController : UISearchBarDelegate{
         navigationController?.popViewController(animated: true)
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("Started")
-    }
-    
     //MARK: - SearchBar
     /// Returns a string when text Change in SearchBar and call the getSearchLocations to return the possible locations
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -134,6 +138,7 @@ extension SearchAddLocationViewController : UISearchBarDelegate{
         if searchText == "" {
             return
         }
+        
         ApixuClient.shared.getSearchLocations(parameterQ: searchText) { (success, results, errorString) in
             
             if let results = results{
@@ -146,11 +151,9 @@ extension SearchAddLocationViewController : UISearchBarDelegate{
             }else{
                 print("Error Search Bar: \(String(describing: errorString)) ")
                 DispatchQueue.main.async {
-                    self.showAlert(title: ErrorTitles.NetworkError, msg: errorString!)
+                    self.showAlert(title: Errors.ErrorTitles.NetworkError, msg: errorString!)
                 }
-                
             }
-            
         }
     }
     
@@ -208,12 +211,15 @@ extension SearchAddLocationViewController {
         node.installTap(onBus: 0, bufferSize: 1024, format: recognitionFormat) { (buffer, time) in
             self.request.append(buffer)
         }
+        
     }
     
+    /// Starts the AudioEngine
     fileprivate func startAudioEngine() {
         audioEngine.prepare()
         do{
             try audioEngine.start()
+            print("AudioEngine Starts")
         }catch{
             print("Error Start AudioEngine : \(error)")
             return
@@ -221,6 +227,20 @@ extension SearchAddLocationViewController {
         
     }
     
+    /// Setup a AudioSession.sharedInstance()
+    fileprivate func setupAudioSession() {
+        let audioSession = AVAudioSession.sharedInstance()
+        do{
+            try audioSession.setCategory(AVAudioSessionCategoryRecord, with: .duckOthers)// or optionMixWithOthers
+            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        }catch{
+            print("error Audio session Properties weren't set because of an error")
+        }
+    }
+    
+    /// Enables the recording, records and brings the top result of a location that is
+    /// speeched recognized.
     @objc private func recordAndRecognizeSpeech(){
         
         speakButtonPressed = true
@@ -228,19 +248,28 @@ extension SearchAddLocationViewController {
 
         setupNodeAudioEngine()
         
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
+        }
+        
+        setupAudioSession()
+        
         startAudioEngine()
         
         guard let myRecognizer = SFSpeechRecognizer() else {
-            //present alertController not supported for the current locale
+            self.showAlert(title: Errors.ErrorTitles.SpeechError, msg: Errors.ErrorMessages.SpeechRecognitionErrorLocale)
             return
         }
         
         if !myRecognizer.isAvailable{
-            //present alertController not available right now
+            self.showAlert(title: Errors.ErrorTitles.SpeechError, msg: Errors.ErrorMessages.SpeechRecognizerErrorNotAvailable)
             return
         }
+        myRecognizer.delegate = self
         
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
+            
             if result != nil {
             if let result = result {
                 let bestString = result.bestTranscription.formattedString
@@ -280,11 +309,8 @@ extension SearchAddLocationViewController {
         })
     }
     
-    private func pauseAudioEngine(){
-        self.audioEngine.pause()
-        //self.recognitionTask?.finish()
-    }
-    
+        
+    /// Stops the recording
     @objc private func stopRecording(){
         speakButtonPressed = false
         navigationButtonTitle()
@@ -292,15 +318,13 @@ extension SearchAddLocationViewController {
         if self.audioEngine.isRunning{
             self.request.endAudio()
             self.audioEngine.inputNode.removeTap(onBus: 0)
-            //self.audioEngine.inputNode.reset()
-            //self.audioEngine.stop()
             self.recognitionTask?.cancel()
             
         }
         
     }
     
-    
+    ///Speak out the text that gets as input
     private func speakOut(text : String) {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: "en_US")
@@ -308,6 +332,7 @@ extension SearchAddLocationViewController {
         synthesizer.speak(utterance)
     }
     
+    /// returns "" if no results have found (.placeName) otherwise return the placeName that has found
     private func locationEntityRecognition(for text : String) -> String{
         var locationIdentified : String = ""
         tagger.string = text
@@ -326,6 +351,7 @@ extension SearchAddLocationViewController {
         
     }
     
+    /// Checks the answer of the user if it is Yes/No
     fileprivate func checkUserAnswer(answer : String){
         switch answer{
         case "Yes","yes":
@@ -351,6 +377,7 @@ extension SearchAddLocationViewController {
         }
     }
     
+    /// Changes the navigation title related to Recording or StopRecording
     fileprivate func navigationButtonTitle() {
         if speakButtonPressed == false{
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Speak", style: .done, target: self, action: #selector(recordAndRecognizeSpeech))
@@ -359,6 +386,7 @@ extension SearchAddLocationViewController {
         }
     }
     
+    /// Checks the authorization Status for the access in the microphone
     private func requestSpeechAuthorization(){
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
             OperationQueue.main.addOperation {
@@ -367,36 +395,33 @@ extension SearchAddLocationViewController {
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                     self.navigationItem.rightBarButtonItem?.tintColor = .orange
                 case .denied:
-                    self.showAlert(title: "The App doesn't have access to your Microphone", msg: "To enable Speech feature, please enable speech")
+                    self.showAlert(title: "The App doesn't have access to your Microphone", msg: "To enable Speech feature, please enable Microphone")
                 case .restricted:
-                    self.showAlert(title: "The App doesn't have access to your Microphone", msg: "To enable Speech feature, please enable speech")
+                    self.showAlert(title: "The App doesn't have access to your Microphone", msg: "To enable Speech feature, please enable Microphone")
                 case .notDetermined:
-                    self.showAlert(title: "The App doesn't have access to your Microphone", msg: "To enable Speech feature, please enable speech")
+                    self.showAlert(title: "The App doesn't have access to your Microphone", msg: "To enable Speech feature, please enable Microphone")
                 }
             }
         }
     }
 }
 
-extension SearchAddLocationViewController: SFSpeechRecognizerDelegate {
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        if available{
-            //The speech Recognition is available in this locale Do nothing
-        }else{
-            //TODO: - Speech recognition is not available in this Location (Locale).Ask in English
-        }
+
+extension SearchAddLocationViewController: AVSpeechSynthesizerDelegate{
+    // When the speakOut() stops the the recording will start again didFinish utterance
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        print("Start Recording again")
+        self.recordAndRecognizeSpeech()
     }
 }
 
-extension SearchAddLocationViewController: AVSpeechSynthesizerDelegate{
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        print("Start Recording again")
-//        do{
-//            try self.audioEngine.start()
-//        }catch{
-//            print("Error  : \(error)")
-//        }
-        self.recordAndRecognizeSpeech()
+extension SearchAddLocationViewController : SFSpeechRecognizerDelegate {
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        if available{
+            print("Is available")
+        }else{
+            print("Not available")
+        }
     }
 }
 
