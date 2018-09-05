@@ -46,7 +46,7 @@ class ApixuClient{
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode , statusCode >= 200 && statusCode <= 299 else{
                 print(response as Any)
-                displayError(errorString: "The response returned a statusCode different from 2xx. Error : \(error!.localizedDescription)")
+                displayError(errorString: "The response returned a statusCode different from 2xx.")
                 return
             }
             

@@ -126,9 +126,6 @@ extension SearchAddLocationViewController : UISearchBarDelegate{
         print("Started")
     }
     
-    
-    
-    
     //MARK: - SearchBar
     /// Returns a string when text Change in SearchBar and call the getSearchLocations to return the possible locations
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -200,10 +197,6 @@ extension SearchAddLocationViewController : UITableViewDelegate {
         
     }
     
-    
-    
-    
-    
 }
 
 //MARK: - RecordAndRecognize Functions
@@ -254,7 +247,20 @@ extension SearchAddLocationViewController {
                 print(bestString)
                 
                 if self.recognizedLocation == ""{
-                    self.locationEntityRecognition(for: bestString)
+                    self.recognizedLocation = self.locationEntityRecognition(for: bestString)
+                    
+                    ApixuClient.shared.getSearchLocations(parameterQ: self.recognizedLocation, completionHandlerForGetSearchLocations: { (success, results, errorString) in
+                        if success{
+                            if let results = results {
+                                self.locations = results
+                                self.stopRecording()
+                                self.speakOut(text: "Do you mean \(self.locations[0].name!). Yes or No")
+                                DispatchQueue.main.async {
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        }
+                    })
                 }else{
                     var lastString : String = ""
                     for segment in result.bestTranscription.segments{
@@ -274,7 +280,7 @@ extension SearchAddLocationViewController {
     
     private func pauseAudioEngine(){
         self.audioEngine.pause()
-        self.recognitionTask?.finish()
+        //self.recognitionTask?.finish()
     }
     
     @objc private func stopRecording(){
@@ -297,12 +303,11 @@ extension SearchAddLocationViewController {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: "en_US")
         utterance.rate = 0.51
-        
         synthesizer.speak(utterance)
-        
     }
     
-    private func locationEntityRecognition(for text : String){
+    private func locationEntityRecognition(for text : String) -> String{
+        var locationIdentified : String = ""
         tagger.string = text
         let range = NSRange(location: 0, length: text.utf16.count)
         let tags : [NSLinguisticTag] = [.placeName]
@@ -311,35 +316,11 @@ extension SearchAddLocationViewController {
             if let tag = tag , tags.contains(tag){
                 let name = (text as NSString).substring(with: tokenRange)
                 print(name)
-                
-            
-                ApixuClient.shared.getSearchLocations(parameterQ: name, completionHandlerForGetSearchLocations: { (success, results, errorString) in
-                    
-                    if success {
-                        if let results = results{
-                            self.locations = results
-                            //self.stopRecording()
-                            //self.audioEngine.stop()
-                            self.pauseAudioEngine()
-                            self.recognizedLocation = self.locations[0].name!
-                            self.speakOut(text: "Do you mean : \(self.locations[0].name!). Yes or No?")
-                            DispatchQueue.main.async {
-                                //Stop Recording
-                                
-                                self.tableView.reloadData()
-                                
-                                //start recording
-                                //self.recordAndRecognizeSpeech()
-                                
-                            }
-                            
-                            
-                        }
-                        
-                    }
-                })
+                locationIdentified = name
             }
         }
+        print(locationIdentified)
+        return locationIdentified
         
     }
     
@@ -358,14 +339,14 @@ extension SearchAddLocationViewController {
         case "No","no":
             print("User said NO")
             //stop AudioEngine
-            self.stopRecording()
+            //self.stopRecording()
             //Recognize Location = ""
             self.recognizedLocation = ""
             //tableView.empty
-            self.locations = []
             //self.locations = []
+            self.locations = []
             self.tableView.reloadData()
-            self.recordAndRecognizeSpeech()
+            //self.recordAndRecognizeSpeech()
         default:
             print("Entered Default")
             break
@@ -413,11 +394,12 @@ extension SearchAddLocationViewController: SFSpeechRecognizerDelegate {
 extension SearchAddLocationViewController: AVSpeechSynthesizerDelegate{
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         print("Start Recording again")
-        do{
-            try self.audioEngine.start()
-        }catch{
-            print("Error  : \(error)")
-        }
+//        do{
+//            try self.audioEngine.start()
+//        }catch{
+//            print("Error  : \(error)")
+//        }
+        self.recordAndRecognizeSpeech()
     }
 }
 
