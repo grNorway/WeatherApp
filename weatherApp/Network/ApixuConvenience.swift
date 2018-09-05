@@ -45,6 +45,7 @@ extension ApixuClient{
     /// It returns and array of dayPrediction of object DayPrediction
     func getForecast(parameterQ : String,days: Int, completionHandlerForGetForecast : @escaping (_ success: Bool, _ daysForecast : [DayPrediction]? ,_ errorString: String? ) -> ()){
 
+        
         let parameters = [Constants.ApixuParameterKeys.parameterQ : parameterQ,
                           Constants.ApixuParameterKeys.days : days] as [String: AnyObject]
 
@@ -120,7 +121,8 @@ extension ApixuClient{
             if let locationName = location[Constants.ApixuResponseKeys.search.name] as? String,let locationID = location[Constants.ApixuResponseKeys.search.id] as? Int{
                 var locationFound = Location()
                 locationFound.name = locationName
-                print(locationID)
+                //TODO: - Delete comment
+                //print(locationID)
                 locationFound.locationID = locationID
                 locations.append(locationFound)
             }
