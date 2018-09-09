@@ -320,7 +320,7 @@ extension SearchAddLocationViewController {
         
     /// Stops the recording
     @objc func stopRecording(){
-        
+        print("Stop Recording")
         speakButtonPressed = false
         navigationButtonTitle()
         

@@ -25,7 +25,6 @@
 		EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EEB212C2D4D003AEF61 /* Constants.swift */; };
 		EADEE17C2136877C00B2C6F3 /* DayPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADEE17B2136877C00B2C6F3 /* DayPrediction.swift */; };
 		EADEE17E2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADEE17D2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift */; };
-		EAF861B92131C03C00B09E32 /* ThingsToDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF861B82131C03C00B09E32 /* ThingsToDO.swift */; };
 		EAFD176B2142597C0091332F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAFD176A2142597C0091332F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +55,6 @@
 		EADEE17A2136820600B2C6F3 /* DataModel5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel5.xcdatamodel; sourceTree = "<group>"; };
 		EADEE17B2136877C00B2C6F3 /* DayPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPrediction.swift; sourceTree = "<group>"; };
 		EADEE17D2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherForLocationCell.swift; sourceTree = "<group>"; };
-		EAF861B82131C03C00B09E32 /* ThingsToDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsToDO.swift; sourceTree = "<group>"; };
 		EAFD176A2142597C0091332F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,7 +89,6 @@
 		EACF8EC6212C2AB3003AEF61 = {
 			isa = PBXGroup;
 			children = (
-				EAF861B82131C03C00B09E32 /* ThingsToDO.swift */,
 				EACF8ED1212C2AB3003AEF61 /* weatherApp */,
 				EACF8ED0212C2AB3003AEF61 /* Products */,
 			);
@@ -256,7 +253,6 @@
 				EA1685F2212EEEAB002FC8A4 /* NotificationName.swift in Sources */,
 				EADEE17E2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift in Sources */,
 				EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */,
-				EAF861B92131C03C00B09E32 /* ThingsToDO.swift in Sources */,
 				EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */,
 				EA971C61212D9851004CC8BC /* SearchAddLocationViewController.swift in Sources */,
 			);
