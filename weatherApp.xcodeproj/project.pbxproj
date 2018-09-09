@@ -21,12 +21,12 @@
 		EACF8ED3212C2AB3003AEF61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */; };
 		EACF8ED5212C2AB3003AEF61 /* WeatherForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8ED4212C2AB3003AEF61 /* WeatherForecastViewController.swift */; };
 		EACF8ED8212C2AB3003AEF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED6212C2AB3003AEF61 /* Main.storyboard */; };
-		EACF8EDA212C2AB4003AEF61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */; };
 		EACF8EDD212C2AB4003AEF61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACF8EDB212C2AB4003AEF61 /* LaunchScreen.storyboard */; };
 		EACF8EEC212C2D4D003AEF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF8EEB212C2D4D003AEF61 /* Constants.swift */; };
 		EADEE17C2136877C00B2C6F3 /* DayPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADEE17B2136877C00B2C6F3 /* DayPrediction.swift */; };
 		EADEE17E2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADEE17D2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift */; };
 		EAF861B92131C03C00B09E32 /* ThingsToDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF861B82131C03C00B09E32 /* ThingsToDO.swift */; };
+		EAFD176B2142597C0091332F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAFD176A2142597C0091332F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +48,6 @@
 		EACF8ED2212C2AB3003AEF61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EACF8ED4212C2AB3003AEF61 /* WeatherForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastViewController.swift; sourceTree = "<group>"; };
 		EACF8ED7212C2AB3003AEF61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EACF8EDC212C2AB4003AEF61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EACF8EDE212C2AB4003AEF61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EACF8EE9212C2D2C003AEF61 /* ApixuClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuClient.swift; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		EADEE17B2136877C00B2C6F3 /* DayPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPrediction.swift; sourceTree = "<group>"; };
 		EADEE17D2136CBAF00B2C6F3 /* DayWeatherForLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherForLocationCell.swift; sourceTree = "<group>"; };
 		EAF861B82131C03C00B09E32 /* ThingsToDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsToDO.swift; sourceTree = "<group>"; };
+		EAFD176A2142597C0091332F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +116,9 @@
 				EACF8EE7212C2B0F003AEF61 /* Controller */,
 				EA1685E6212EA5D5002FC8A4 /* Extensions */,
 				EACF8EE8212C2B1D003AEF61 /* Storyboards */,
-				EACF8ED9212C2AB4003AEF61 /* Assets.xcassets */,
 				EACF8EDB212C2AB4003AEF61 /* LaunchScreen.storyboard */,
 				EACF8EDE212C2AB4003AEF61 /* Info.plist */,
+				EAFD176A2142597C0091332F /* Assets.xcassets */,
 			);
 			path = weatherApp;
 			sourceTree = "<group>";
@@ -230,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EACF8EDD212C2AB4003AEF61 /* LaunchScreen.storyboard in Resources */,
-				EACF8EDA212C2AB4003AEF61 /* Assets.xcassets in Resources */,
+				EAFD176B2142597C0091332F /* Assets.xcassets in Resources */,
 				EACF8ED8212C2AB3003AEF61 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

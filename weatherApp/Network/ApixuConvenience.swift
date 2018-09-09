@@ -12,12 +12,6 @@ import CoreData
 extension ApixuClient{
     
     
-    
-    
-    //TODO: - Change the method and have 2 completionHandlers for upodating the view in 1)a)LocationStoredViewControllerCell , b) save background on Core Data
-    //                                                                                  2)Save the Forecast for ViewController
-    
-    
     func getCurrentWeatherAndForecast(parameterQ:String,locationID : Int,days : Int,completionHandlerForGetCurrentWeather : @escaping (_ success : Bool, _ error:String?) -> ()) {
         
         let parameters = [Constants.ApixuParameterKeys.parameterQ : parameterQ,
@@ -114,6 +108,7 @@ extension ApixuClient{
     }
     
 
+    
     private func parseLocationResults(results: [[String:AnyObject]]) -> [Location]  {
         
         var locations = [Location]()
@@ -121,8 +116,6 @@ extension ApixuClient{
             if let locationName = location[Constants.ApixuResponseKeys.search.name] as? String,let locationID = location[Constants.ApixuResponseKeys.search.id] as? Int{
                 var locationFound = Location()
                 locationFound.name = locationName
-                //TODO: - Delete comment
-                //print(locationID)
                 locationFound.locationID = locationID
                 locations.append(locationFound)
             }
@@ -131,27 +124,29 @@ extension ApixuClient{
     
     }
     
-    private func downloadIconData(iconPath : String,completionHandlerDownloadIconData : @escaping(_ iconData : Data?,_ errorString:String?) -> ()){
-        let iconPath = String(format: "https:%@", iconPath.replacingOccurrences(of: "//", with: "", options: NSString.CompareOptions.literal, range: nil))
-        print(iconPath)
-        guard let iconURL = URL(string: iconPath) else{
-            completionHandlerDownloadIconData(nil,"Error URL Download weather Icon")
-            return
-        }
-        
-        let request : URLRequest = URLRequest(url: iconURL)
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            
-            guard error == nil else{
-                completionHandlerDownloadIconData(nil,"Error completionHandlerForDownloadIconData : \(error!.localizedDescription)")
-                return
-            }
-            
-            completionHandlerDownloadIconData(data,nil)
-        }
-        task.resume()
-    }
+    
+    
+//    private func downloadIconData(iconPath : String,completionHandlerDownloadIconData : @escaping(_ iconData : Data?,_ errorString:String?) -> ()){
+//        let iconPath = String(format: "https:%@", iconPath.replacingOccurrences(of: "//", with: "", options: NSString.CompareOptions.literal, range: nil))
+//        print(iconPath)
+//        guard let iconURL = URL(string: iconPath) else{
+//            completionHandlerDownloadIconData(nil,"Error URL Download weather Icon")
+//            return
+//        }
+//        
+//        let request : URLRequest = URLRequest(url: iconURL)
+//        
+//        let task = session.dataTask(with: request) { (data, response, error) in
+//            
+//            guard error == nil else{
+//                completionHandlerDownloadIconData(nil,"Error completionHandlerForDownloadIconData : \(error!.localizedDescription)")
+//                return
+//            }
+//            
+//            completionHandlerDownloadIconData(data,nil)
+//        }
+//        task.resume()
+//    }
     
     
     //MARK: - Parse Forecast day
@@ -190,14 +185,4 @@ extension ApixuClient{
     }
     
 }
-
-
-
-
-
-
-
-
-
-
 

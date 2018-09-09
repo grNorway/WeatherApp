@@ -10,6 +10,6 @@ import Foundation
 
 extension Notification.Name {
     
-    static let locationSelected = Notification.Name(rawValue: "locationSelected")
-    
+    static let appDidEnterBackground = Notification.Name(rawValue: "appDidEnterBackground")
+    static let appDidBecomeActive = Notification.Name(rawValue: "appDidBecomeActive")
 }

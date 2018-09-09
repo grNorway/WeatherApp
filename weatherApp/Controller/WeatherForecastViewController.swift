@@ -86,6 +86,11 @@ class WeatherForecastViewController: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    
     deinit {
         print("deinit")
     }
@@ -95,7 +100,7 @@ class WeatherForecastViewController: UIViewController {
     private func setupView(areDataLoaded : Bool){
         currentWeatherView.isHidden = !areDataLoaded
         tableView.isHidden = !areDataLoaded
-        backgroundImage.image = UIImage(named: "WeatherImage")
+        backgroundImage.image = UIImage(named: "WeatherImage3")
         tableView.backgroundColor = UIColor.clear
         guard areDataLoaded != false else{
             spiner.activityIndicatorViewStyle = .whiteLarge

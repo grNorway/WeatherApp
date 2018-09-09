@@ -48,6 +48,7 @@ class SearchAddLocationViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         requestSpeechAuthorization()
         synthesizer.delegate = self
     }
@@ -57,6 +58,9 @@ class SearchAddLocationViewController: UIViewController{
         super.viewWillAppear(animated)
         
         setupSearchBar()
+        
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,7 +72,7 @@ class SearchAddLocationViewController: UIViewController{
     //MARK: - Fucntions
     
     private func setupNavigationBar(){
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Speak", style: .done, target: self, action: #selector(recordAndRecognizeSpeech))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Speak", style: .done, target: self, action: #selector(recordEnabled))
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.navigationItem.rightBarButtonItem?.tintColor = .darkGray
     }
@@ -82,7 +86,6 @@ class SearchAddLocationViewController: UIViewController{
         searchBar.barTintColor = UIColor.clear
         searchBar.backgroundColor = UIColor.clear
         searchBar.isTranslucent = true
-        //searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         tableView.backgroundColor = UIColor.clear
     }
     
@@ -241,7 +244,12 @@ extension SearchAddLocationViewController {
     
     /// Enables the recording, records and brings the top result of a location that is
     /// speeched recognized.
-    @objc private func recordAndRecognizeSpeech(){
+    @objc private func recordEnabled(){
+        speakOut(text: "Recording")
+    }
+    
+    private func recordAndRecognizeSpeech(){
+
         
         speakButtonPressed = true
         navigationButtonTitle()
@@ -311,7 +319,8 @@ extension SearchAddLocationViewController {
     
         
     /// Stops the recording
-    @objc private func stopRecording(){
+    @objc func stopRecording(){
+        
         speakButtonPressed = false
         navigationButtonTitle()
         
@@ -323,6 +332,7 @@ extension SearchAddLocationViewController {
         }
         
     }
+    
     
     ///Speak out the text that gets as input
     private func speakOut(text : String) {
@@ -369,7 +379,6 @@ extension SearchAddLocationViewController {
             self.recognizedLocation = ""
             self.locations = []
             self.tableView.reloadData()
-            //self.recordAndRecognizeSpeech()
         default:
             print("Entered Default")
             break
@@ -380,9 +389,12 @@ extension SearchAddLocationViewController {
     /// Changes the navigation title related to Recording or StopRecording
     fileprivate func navigationButtonTitle() {
         if speakButtonPressed == false{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Speak", style: .done, target: self, action: #selector(recordAndRecognizeSpeech))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Speak", style: .done, target: self, action: #selector(recordEnabled))
+            NotificationCenter.default.removeObserver(Notification.Name.appDidEnterBackground)
         }else{
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Stop", style: .done, target: self, action: #selector(stopRecording))
+            NotificationCenter.default.addObserver(self, selector: #selector(stopRecording), name: Notification.Name.appDidEnterBackground, object: nil)
+            
         }
     }
     
